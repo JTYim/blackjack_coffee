@@ -14,5 +14,6 @@ class window.HandView extends Backbone.View
     @$el.append @collection.map (card) ->
       new CardView(model: card).$el
     # conditional for ace check
-    @$('.score').text @collection.scores()[0]
+
+    @$('.score').text @collection.scores()
 

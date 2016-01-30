@@ -6,7 +6,7 @@ class window.Hand extends Backbone.Collection
 
   hit: ->
     @add(@deck.pop())
-    console.log(@hasAce())
+    #console.log(@hasAce())
     #if @scores()[0] > 21 and @hasAce
 
   stand: ->
@@ -24,6 +24,15 @@ class window.Hand extends Backbone.Collection
     # The scores are an array of potential scores.
     # Usually, that array contains one element. That is the only score.
     # when there is an ace, it offers you two scores - the original score, and score + 10.
-    [@minScore() + 10 * @hasAce(), @minScore()]
+    if (@minScore() + 10 * @hasAce()) <= 21 
+      @minScore() + 10 * @hasAce() 
+    else @minScore()
 
 
+
+  
+
+
+
+    # var x = [@minScore() + 10 * @hasAce(), @minScore()].filter(el){ return el<=21 } 
+    # x = x || this.model.reset(); 
